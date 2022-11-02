@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: default
+  application:
+    name:
+  datasource:
+    username: ${JPA_USERNAME}
+    url: ${JPA_URL}
+    driverClassName: ${JPA_DRIVER}
+    password: ${JPA_PASSWORD}
+  jpa:
+    database-platform: ${JPA_DIALECT}
+    hibernate:
+      ddlAuto: none
+
+server:
+  port:
+    ${SERVER_PORT}

@@ -1,0 +1,7 @@
+SERVER_PORT: 8082
+
+JPA_USERNAME: postgres
+JPA_URL: jdbc:postgresql://54.234.97.45:5432/inventory_db
+JPA_DRIVER: org.postgresql.Driver
+JPA_PASSWORD: JavaLabDB1234
+JPA_DIALECT: org.hibernate.dialect.PostgreSQLDialect
