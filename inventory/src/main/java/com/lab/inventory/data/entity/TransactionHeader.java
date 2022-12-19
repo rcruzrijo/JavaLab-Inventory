@@ -19,6 +19,9 @@ public class TransactionHeader {
     @Id
     @GeneratedValue
     private Long id;
+    @ManyToOne
+    @JoinColumn(name="transaction_type", nullable=false)
+    private TransactionType transactionType;
     @Column(name="transaction_date")
     private LocalDate transactionDate;
     @Column(name="customer_id")
@@ -29,6 +32,8 @@ public class TransactionHeader {
     private Long providerId;
     @Column(name="provider_reference_id")
     private String  providerReferenceId;
+    @Column
+    private String description;
     @Column(name="status")
     private String  status;
     @OneToMany(mappedBy="transaction")
