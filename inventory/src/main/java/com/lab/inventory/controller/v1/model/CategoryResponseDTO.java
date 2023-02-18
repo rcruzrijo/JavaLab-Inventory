@@ -2,10 +2,7 @@ package com.lab.inventory.controller.v1.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lab.inventory.data.entity.Category;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,7 +10,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class CategoryResponseDTO {
+    @NonNull
     @JsonProperty("type")
     private String type;
     @JsonProperty("message")

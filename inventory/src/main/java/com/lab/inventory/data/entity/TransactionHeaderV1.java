@@ -31,6 +31,6 @@ public class TransactionHeaderV1 {
     private String  providerReferenceId;
     @Column(name="status")
     private String  status;
-    @OneToMany(mappedBy="transaction")
-    private Set<TransactionDetail> transactionDetails;
+    @OneToMany(mappedBy="transaction_id")
+    private Set<TransactionDetailV1> transactionDetails;
 }

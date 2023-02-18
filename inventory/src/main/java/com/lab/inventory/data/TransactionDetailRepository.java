@@ -1,6 +1,5 @@
 package com.lab.inventory.data;
 
-import com.lab.inventory.data.entity.Product;
 import com.lab.inventory.data.entity.TransactionDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +11,6 @@ import java.util.List;
 @Repository
 public interface TransactionDetailRepository extends JpaRepository <TransactionDetail, Long> {
 
-    @Query(value = "select td from TransactionDetail td where td.Transaction_id = :transactionId")
-    List<TransactionDetail> getByTransactionId(@Param("transactionId") Long transactionId);
+    @Query(value = "select td from TransactionDetail td where td.id = :transactionId")
+    TransactionDetail getByTransactionId(@Param("transactionId") Long transactionId);
 }

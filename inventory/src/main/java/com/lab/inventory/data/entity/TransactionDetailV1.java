@@ -3,6 +3,7 @@ package com.lab.inventory.data.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,15 +12,18 @@ import java.math.BigDecimal;
 @Entity
 @IdClass(TransactionDetailId.class)
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Table(name="transaction_details_v1")
 public class TransactionDetailV1 {
     @Id
-    @ManyToOne
+    private Long transaction_id;
+    /*@ManyToOne
     @JoinColumn(name="transaction_id", nullable=false)
-    private TransactionHeader transaction;
+    private TransactionHeaderV1 transactionHeader;*/
     @Id
     private Integer seq;
+
 
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)
