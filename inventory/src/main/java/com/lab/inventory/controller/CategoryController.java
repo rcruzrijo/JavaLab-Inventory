@@ -1,7 +1,7 @@
 package com.lab.inventory.controller;
 
 import com.lab.inventory.controller.v1.model.CategoryResponseDTO;
-import com.lab.inventory.service.CategoryService;
+import com.lab.inventory.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +15,14 @@ import java.util.ArrayList;
 @RequestMapping("/inventory/categories")
 public class CategoryController {
     @Autowired
-    private CategoryService categoryService;
+    private CategoryServiceImpl categoryServiceImpl;
 
     @GetMapping
     public ResponseEntity <CategoryResponseDTO> getAllCategories() {
         return new ResponseEntity<>(CategoryResponseDTO.builder()
                 .type("OK")
                 .message("Success")
-                .value(categoryService.getAll()).build(), HttpStatus.OK);
+                .value(categoryServiceImpl.getAll()).build(), HttpStatus.OK);
     }
 
 }

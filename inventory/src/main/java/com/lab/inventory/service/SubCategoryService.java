@@ -11,7 +11,7 @@ public interface SubCategoryService {
 
     List<SubCategory> getAll();
 
-    SubCategory findById(Long Id);
+    SubCategory findById(Integer id);
 
-    SubCategory findByCategoryId(Long CategoryId);
+    List<SubCategory> findByCategoryId(Integer categoryId);
 }

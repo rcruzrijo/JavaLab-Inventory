@@ -1,15 +1,9 @@
 package com.lab.inventory.data.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.sql.Select;
+import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.*;
 
 @Data
@@ -17,15 +11,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 @Table(name="category")
 public class Category {
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
     @Column
     private String description;
     @Column(name="last_updated")
     private LocalDate lastUpdated;
-    @OneToMany(mappedBy="category")
-    private Set<SubCategory> subCategories;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="category")
+    private List<SubCategory> subCategories;
 }

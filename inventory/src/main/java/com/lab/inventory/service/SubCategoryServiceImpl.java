@@ -45,14 +45,14 @@ public class SubCategoryServiceImpl implements SubCategoryService {
     }
 
     @Override
-    public SubCategory findById(Long id) {
+    public SubCategory findById(Integer id) {
         return subCategoryRepository.findById(id)
                 .orElseThrow(()-> new NotFound("subCategory with id: "+id+" not Found"));
 
     }
 
     @Override
-    public SubCategory findByCategoryId(Long id) {
+    public List<SubCategory> findByCategoryId(Integer categoryId) {
         return null;
 
     }

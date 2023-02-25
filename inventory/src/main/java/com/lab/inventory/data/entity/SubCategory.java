@@ -1,4 +1,5 @@
 package com.lab.inventory.data.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +17,10 @@ import java.time.LocalDate;
 public class SubCategory {
     @Id
     @GeneratedValue
-    private Long id;
-    @ManyToOne
-    @JoinColumn(name="category_id", nullable=false)
+    private int id;
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name="category_id")
+    @JsonIgnore
     private Category category;
     @Column
     private String description;
