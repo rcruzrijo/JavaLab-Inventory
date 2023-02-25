@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name="category")
 public class Category {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy= GenerationType.IDENTITY, generator="category_id_seq")
     private int id;
     @Column
     private String description;

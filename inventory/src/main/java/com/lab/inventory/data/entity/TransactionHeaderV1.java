@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name="transaction_header_v1")
 public class TransactionHeaderV1 {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_header_v1_id_seq")
     private Long id;
     @Column(name="transaction_date")
     private LocalDate transactionDate;

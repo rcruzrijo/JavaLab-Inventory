@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name="product_image")
 public class ProductImage {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy= GenerationType.IDENTITY, generator="product_image_id_seq")
     private Long id;
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)

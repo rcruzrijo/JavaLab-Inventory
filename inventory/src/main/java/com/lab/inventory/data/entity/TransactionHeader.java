@@ -17,7 +17,7 @@ import java.util.Set;
 @Table(name="transaction_header")
 public class TransactionHeader {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_header_id_seq")
     private Long id;
     @ManyToOne
     @JoinColumn(name="transaction_type", nullable=false)

@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Table(name="sub_category")
 public class SubCategory {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy= GenerationType.IDENTITY, generator="sub_category_id_seq")
     private int id;
     @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
