@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TransactionHeaderRepository extends JpaRepository <TransactionHeader,Long> {
+public interface TransactionHeaderRepository extends JpaRepository <TransactionHeader,Integer> {
 
     @Query(value = "select th from TransactionHeader th where th.status = :status")
     List<TransactionHeader> getByStatus(@Param("status") String status);

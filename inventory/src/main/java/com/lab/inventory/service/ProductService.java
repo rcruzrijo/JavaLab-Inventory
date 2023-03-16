@@ -11,14 +11,14 @@ public interface ProductService {
     Product update(Product product);
 
     Product updateStatus(Product product);
-
+    Product patch (Integer id, Map<Object, Object> fields);
     List<Product> getAll();
 
     List<Product> getAllActive();
 
     List<Product> getAllInactive();
 
-    Product findById(Long Id);
+    Product findById(Integer Id);
 
     List<Product> getFiltered(Map<String, String> filters);
 }

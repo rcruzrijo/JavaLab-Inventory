@@ -18,13 +18,13 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue (strategy= GenerationType.IDENTITY, generator="product_id_seq")
-    private Long id;
+    private int id;
     @Column
     private String description;
     @Column(name="unit_price")
     private BigDecimal unitPrice;
     @Column(name="stock_control")
-    private String stockControl;
+    private Boolean stockControl;
     @Column(name="available_qty")
     private BigDecimal availableQty;
     @Column(name="min_qty")

@@ -16,9 +16,11 @@ public class TransactionDetailServiceImpl implements TransactionDetailService {
 
     @Override
     public TransactionDetail save (TransactionDetail transactionDetail){
-        if (transactionDetail.getTransaction().getId() == null)
+        Integer id_wrk = transactionDetail.getTransaction().getId();
+        if (id_wrk  == null)
             throw new InvalidRequest("Transaction ID should not be empty");
-        if (transactionDetail.getProduct().getId() == null)
+        id_wrk = transactionDetail.getProduct().getId();
+        if (id_wrk == null)
             throw new InvalidRequest("Product Id should not be empty");
         if (transactionDetail.getQuantity() == null)
             throw new InvalidRequest("Quantity should not be empty");

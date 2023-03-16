@@ -9,5 +9,5 @@ public interface TransactionTypeService {
     TransactionType save(TransactionType transactionType);
     TransactionType update(TransactionType transactionType);
     List<TransactionType> getAll();
-    TransactionType findById(Long Id);
+    TransactionType findById(int Id);
 }

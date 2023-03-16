@@ -12,7 +12,9 @@ public interface TransactionHeaderService {
 
     TransactionHeader updateStatus(TransactionHeader transactionHeader);
 
-    TransactionHeader findById(Long Id);
+    TransactionHeader patch (Integer id, Map<Object, Object> fields);
+
+    TransactionHeader findById(Integer Id);
 
     List<TransactionHeader> getAll();
 

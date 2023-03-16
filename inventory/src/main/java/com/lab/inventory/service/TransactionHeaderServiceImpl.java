@@ -1,17 +1,19 @@
 package com.lab.inventory.service;
 
 import com.lab.inventory.data.TransactionHeaderRepository;
-import com.lab.inventory.data.entity.TransactionDetail;
 import com.lab.inventory.data.entity.TransactionHeader;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,16 +28,19 @@ public class TransactionHeaderServiceImpl implements TransactionHeaderService {
     @Override
     @Transactional
     public TransactionHeader save (TransactionHeader transactionHeader){
-        if (transactionHeader.getTransactionType().getId() == null)
+        Integer idw = transactionHeader.getTransactionType().getId();
+        Integer customerIdw = transactionHeader.getCustomerId();
+        Integer providerIdw = transactionHeader.getProviderId();
+        if (idw == null)
             throw new InvalidRequest("Transaction Type should not be empty");
         if ( ("OUT".equals(transactionHeader.getTransactionType().getEfect()))
-                && (transactionHeader.getCustomerId() == null) )
+                && (customerIdw == null) )
             throw new InvalidRequest("Customer should not be empty");
         if ( ("OUT".equals(transactionHeader.getTransactionType().getEfect()))
                 && (transactionHeader.getCustomerReferenceId() == null || transactionHeader.getCustomerReferenceId().isEmpty()) )
             throw new InvalidRequest("Customer Reference should not be empty");
         if ( ("IN".equals(transactionHeader.getTransactionType().getEfect()))
-                && (transactionHeader.getProviderId() == null ) )
+                && (providerIdw == null ) )
             throw new InvalidRequest("Provider should not be empty");
         if ( ("IN".equals(transactionHeader.getTransactionType().getEfect()))
                 && (transactionHeader.getProviderReferenceId() == null || transactionHeader.getProviderReferenceId().isEmpty()) )
@@ -89,7 +94,23 @@ public class TransactionHeaderServiceImpl implements TransactionHeaderService {
     }
 
     @Override
-    public TransactionHeader findById(Long id) {
+    public TransactionHeader patch (Integer id, Map<Object, Object> fields) {
+        Optional<TransactionHeader> transactionHeader = transactionHeaderRepository.findById(id);
+        if (transactionHeader.isPresent()) {
+            fields.forEach((key, value) -> {
+                Field field = ReflectionUtils.findField(TransactionHeader.class, (String) key);
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, transactionHeader.get(), value);
+            });
+        };
+        /*return product;*/
+        return transactionHeaderRepository
+                .findById(id).
+                orElseThrow(()->new NotFound("Product with ID: "+id+" Not Found!"));
+    }
+
+    @Override
+    public TransactionHeader findById(Integer id) {
         return transactionHeaderRepository.findById(id)
                 .orElseThrow(()-> new NotFound("TransactionHeader with id: "+id+" not Found"));
 

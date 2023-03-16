@@ -15,8 +15,8 @@ import javax.persistence.*;
 @Table(name="transaction_type")
 public class TransactionType {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_type_id_seq")
+    private int id;
     @Column
     private String description;
     @Column

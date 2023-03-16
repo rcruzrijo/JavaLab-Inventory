@@ -18,15 +18,15 @@ import java.util.Set;
 public class TransactionHeaderV1 {
     @Id
     @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_header_v1_id_seq")
-    private Long id;
+    private int id;
     @Column(name="transaction_date")
     private LocalDate transactionDate;
     @Column(name="customer_id")
-    private Long customerId;
+    private int customerId;
     @Column (name="customer_reference_id")
     private String  customerReferenceId;
     @Column(name="provider_id")
-    private Long providerId;
+    private int providerId;
     @Column(name="provider_reference_id")
     private String  providerReferenceId;
     @Column(name="status")

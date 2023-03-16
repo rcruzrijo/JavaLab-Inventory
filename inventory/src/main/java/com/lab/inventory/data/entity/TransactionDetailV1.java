@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @Table(name="transaction_details_v1")
 public class TransactionDetailV1 {
     @Id
-    private Long transaction_id;
+    private int transaction_id;
     /*@ManyToOne
     @JoinColumn(name="transaction_id", nullable=false)
     private TransactionHeaderV1 transactionHeader;*/

@@ -41,7 +41,7 @@ public class TransactionTypeServiceImpl implements TransactionTypeService {
     }
 
     @Override
-    public TransactionType findById(Long id) {
+    public TransactionType findById(int id) {
         return transactionTypeRepository.findById(id)
                 .orElseThrow(()-> new NotFound("TransactionType with id: "+id+" not Found"));
 

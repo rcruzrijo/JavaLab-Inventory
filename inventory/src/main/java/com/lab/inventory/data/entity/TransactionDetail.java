@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 public class TransactionDetail {
     @Id
     @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_detail_id_seq")
-    private Long id;
+    private int id;
     @ManyToOne
     @JoinColumn(name="transaction_id", nullable=false)
     private TransactionHeader transaction;

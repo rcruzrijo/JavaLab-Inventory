@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository <Product, Long> {
+public interface ProductRepository extends JpaRepository <Product, Integer> {
     @Query(value = "select p from Product p where p.status = :status")
     List<Product> getByStatus(@Param("status") String status);
 }

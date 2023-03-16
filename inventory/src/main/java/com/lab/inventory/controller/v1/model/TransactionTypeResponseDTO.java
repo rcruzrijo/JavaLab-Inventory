@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductTransactionTypeResponseDTO {
+public class TransactionTypeResponseDTO {
     @JsonProperty("type")
     private String type;
     @JsonProperty("message")

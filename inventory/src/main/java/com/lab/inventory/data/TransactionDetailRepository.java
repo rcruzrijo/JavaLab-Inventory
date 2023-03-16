@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TransactionDetailRepository extends JpaRepository <TransactionDetail, Long> {
+public interface TransactionDetailRepository extends JpaRepository <TransactionDetail, Integer> {
 
     @Query(value = "select td from TransactionDetail td where td.id = :transactionId")
-    TransactionDetail getByTransactionId(@Param("transactionId") Long transactionId);
+    TransactionDetail getByTransactionId(@Param("transactionId") Integer transactionId);
 }

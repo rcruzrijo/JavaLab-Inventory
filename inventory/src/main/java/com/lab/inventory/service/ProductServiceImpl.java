@@ -5,11 +5,15 @@ import com.lab.inventory.data.entity.Product;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
         if (product.getSubCategory() == null)
             throw new InvalidRequest("SubCategory of the product should not be empty");
         if (product.getStockControl() == null)
-            product.setStockControl("true");
+            product.setStockControl(true);
         if (product.getAvailableQty() == null)
             product.setAvailableQty(BigDecimal.valueOf(0.00));
         if (product.getMinQty() == null)
@@ -63,6 +67,22 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product patch (Integer id, Map<Object, Object> fields) {
+        Optional<Product> product = productRepository.findById(id);
+        if (product.isPresent()) {
+            fields.forEach((key, value) -> {
+                Field field = ReflectionUtils.findField(Product.class, (String) key);
+                field.setAccessible(true);
+                ReflectionUtils.setField(field, product.get(), value);
+            });
+        };
+        /*return product;*/
+        return productRepository
+                .findById(id).
+                orElseThrow(()->new NotFound("Product with ID: "+id+" Not Found!"));
+    }
+
+    @Override
     public List<Product> getAll() {
         return productRepository.findAll();
     }
@@ -78,7 +98,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(Long id) {
+    public Product findById(Integer id) {
         return productRepository.findById(id)
                 .orElseThrow(()-> new NotFound("Product with id: "+id+" not Found"));
 

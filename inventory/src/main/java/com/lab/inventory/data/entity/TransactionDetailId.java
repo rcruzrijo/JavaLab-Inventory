@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class TransactionDetailId implements Serializable {
-    private Long transaction_id;
+    private Integer transaction_id;
     private Integer seq;
 
 }

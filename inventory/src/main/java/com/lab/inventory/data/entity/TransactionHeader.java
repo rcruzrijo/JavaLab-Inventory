@@ -18,18 +18,18 @@ import java.util.Set;
 public class TransactionHeader {
     @Id
     @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_header_id_seq")
-    private Long id;
+    private int id;
     @ManyToOne
     @JoinColumn(name="transaction_type", nullable=false)
     private TransactionType transactionType;
     @Column(name="transaction_date")
     private LocalDate transactionDate;
     @Column(name="customer_id")
-    private Long customerId;
+    private int customerId;
     @Column (name="customer_reference_id")
     private String  customerReferenceId;
     @Column(name="provider_id")
-    private Long providerId;
+    private int providerId;
     @Column(name="provider_reference_id")
     private String  providerReferenceId;
     @Column

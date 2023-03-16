@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductTransactionTypeRequestDTO {
+public class TransactionTypeDTO {
+    @JsonProperty("id")
+    private int id;
     @JsonProperty("description")
     private String  description;
     @JsonProperty("efect")
