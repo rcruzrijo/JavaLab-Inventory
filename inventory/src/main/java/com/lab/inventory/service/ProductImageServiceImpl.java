@@ -1,6 +1,6 @@
 package com.lab.inventory.service;
 
-import com.lab.inventory.data.ProductImageRepository;
+import com.lab.inventory.data.repo.ProductImageRepository;
 import com.lab.inventory.data.entity.ProductImage;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;

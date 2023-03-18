@@ -1,6 +1,6 @@
 package com.lab.inventory.service;
 
-import com.lab.inventory.data.TransactionTypeRepository;
+import com.lab.inventory.data.repo.TransactionTypeRepository;
 import com.lab.inventory.data.entity.TransactionType;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;

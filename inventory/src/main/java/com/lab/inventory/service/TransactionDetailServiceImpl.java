@@ -1,13 +1,11 @@
 package com.lab.inventory.service;
 
-import com.lab.inventory.data.TransactionDetailRepository;
+import com.lab.inventory.data.repo.TransactionDetailRepository;
 import com.lab.inventory.data.entity.TransactionDetail;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class TransactionDetailServiceImpl implements TransactionDetailService {

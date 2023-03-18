@@ -1,26 +1,24 @@
 package com.lab.inventory.data.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
-@Data
 @Entity
+@Table(name="transaction_header")
+@Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Table(name="transaction_header")
 public class TransactionHeader {
     @Id
     @GeneratedValue (strategy= GenerationType.IDENTITY, generator="transaction_header_id_seq")
     private int id;
-    @ManyToOne
-    @JoinColumn(name="transaction_type", nullable=false)
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name="transaction_type_id", nullable=false)
     private TransactionType transactionType;
     @Column(name="transaction_date")
     private LocalDate transactionDate;

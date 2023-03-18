@@ -1,11 +1,10 @@
 package com.lab.inventory.service;
 
-import com.lab.inventory.data.ProductRepository;
+import com.lab.inventory.data.repo.ProductRepository;
 import com.lab.inventory.data.entity.Product;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.server.DelegatingServerHttpResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 

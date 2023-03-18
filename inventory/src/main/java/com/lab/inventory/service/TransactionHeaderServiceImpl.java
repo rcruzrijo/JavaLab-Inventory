@@ -1,6 +1,6 @@
 package com.lab.inventory.service;
 
-import com.lab.inventory.data.TransactionHeaderRepository;
+import com.lab.inventory.data.repo.TransactionHeaderRepository;
 import com.lab.inventory.data.entity.TransactionHeader;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;
@@ -47,6 +47,7 @@ public class TransactionHeaderServiceImpl implements TransactionHeaderService {
             throw new InvalidRequest("Provider Reference should not be empty");
         if (transactionHeader.getDescription() == null || transactionHeader.getDescription().isEmpty())
             throw new InvalidRequest("Description should not be empty");
+
         if (transactionHeader.getTransactionDetails() == null || transactionHeader.getTransactionDetails().isEmpty())
             throw new InvalidRequest("Transaction has no Details");
 

@@ -1,6 +1,6 @@
 package com.lab.inventory.service;
 
-import com.lab.inventory.data.SubCategoryRepository;
+import com.lab.inventory.data.repo.SubCategoryRepository;
 import com.lab.inventory.data.entity.SubCategory;
 import com.lab.inventory.util.exception.InvalidRequest;
 import com.lab.inventory.util.exception.NotFound;

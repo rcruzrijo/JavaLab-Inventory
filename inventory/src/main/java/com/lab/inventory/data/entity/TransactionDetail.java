@@ -1,14 +1,13 @@
 package com.lab.inventory.data.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@Setter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,6 +19,7 @@ public class TransactionDetail {
     private int id;
     @ManyToOne
     @JoinColumn(name="transaction_id", nullable=false)
+    @JsonIgnore
     private TransactionHeader transaction;
     @ManyToOne
     @JoinColumn(name="product_id", nullable=false)

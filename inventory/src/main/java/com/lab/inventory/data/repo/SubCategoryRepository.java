@@ -1,4 +1,4 @@
-package com.lab.inventory.data;
+package com.lab.inventory.data.repo;
 
 import com.lab.inventory.data.entity.SubCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

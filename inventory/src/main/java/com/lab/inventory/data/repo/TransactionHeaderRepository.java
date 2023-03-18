@@ -1,4 +1,4 @@
-package com.lab.inventory.data;
+package com.lab.inventory.data.repo;
 
 import com.lab.inventory.data.entity.TransactionHeader;
 import org.springframework.data.jpa.repository.JpaRepository;
